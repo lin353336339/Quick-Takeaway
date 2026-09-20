@@ -1,4 +1,4 @@
-package com.sky.utils;
+package com.Quick.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

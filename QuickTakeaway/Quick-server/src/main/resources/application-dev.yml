@@ -5,24 +5,24 @@ sky:
     port: 3306
     database: sky_take_out
     username: root
-    password: YOUR_DB_PASSWORD
+    password: 13132244
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: YOUR_ACCESS_KEY_ID
-    access-key-secret: YOUR_ACCESS_KEY_SECRET
-    bucket-name: YOUR_BUCKET_NAME
+    access-key-id: LTAI5tDfaptGdcd2xC3hvSHB
+    access-key-secret: COv5xTSWZHrwbNr25iNlAyFg5UZK6P
+    bucket-name: lin353336339-test-bucket
   redis:
     host: localhost
     port: 6379
-    password: YOUR_REDIS_PASSWORD
+    password: 131322
     database: 0
   wechat:
-    appid: YOUR_WECHAT_APPID
-    secret: YOUR_WECHAT_SECRET
-    mchid: YOUR_MCHID
-    mchSerialNo: YOUR_MCH_SERIAL_NO
+    appid: wx99ed1b3b59454d8e
+    secret: d0a8b6cb8f606960fa31050c68af1363
+    mchid: 1561414331
+    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
     privateKeyFilePath: D:\pay\apiclientkey.pem
-    apiV3Key: YOUR_API_V3_KEY
-    weChatPayCertFilePath: D:\pay\wechatpay_cert.pem
-    notifyUrl: https://your-domain/notify/paySuccess
-    refundNotifyUrl: https://your-domain/notify/refundSuccess
+    apiV3Key: CZBK51236435wxpay435434323FFDuV3
+    weChatPayCertFilePath: D:\pay\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
+    notifyUrl: https://33dd32a5.r16.cpolar.top/notify/paySuccess
+    refundNotifyUrl: https://33dd32a5.r16.cpolar.top/notify/refundSuccess

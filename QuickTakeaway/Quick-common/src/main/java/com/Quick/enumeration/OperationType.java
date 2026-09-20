@@ -1,4 +1,4 @@
-package com.sky.enumeration;
+package com.Quick.enumeration;
 
 /**
  * 数据库操作类型

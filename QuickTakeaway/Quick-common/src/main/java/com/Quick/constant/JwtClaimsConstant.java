@@ -1,4 +1,4 @@
-package com.sky.constant;
+package com.Quick.constant;
 
 public class JwtClaimsConstant {
 

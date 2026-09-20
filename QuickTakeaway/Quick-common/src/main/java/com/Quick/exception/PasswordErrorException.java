@@ -1,4 +1,4 @@
-package com.sky.exception;
+package com.Quick.exception;
 
 /**
  * 密码错误异常

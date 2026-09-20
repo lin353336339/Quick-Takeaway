@@ -1,4 +1,4 @@
-package com.sky.exception;
+package com.Quick.exception;
 
 public class AddressBookBusinessException extends BaseException {
 

@@ -1,0 +1,71 @@
+package com.Quick.service;
+
+import com.Quick.dto.DishDTO;
+import com.Quick.dto.DishPageQueryDTO;
+import com.Quick.entity.Dish;
+import com.Quick.result.PageResult;
+import com.Quick.vo.DishVO;
+
+import java.util.List;
+
+public interface DishService {
+
+    /**
+     * 新增菜品和对应的口味
+     * @param dishDTO
+     */
+    public void saveWithFlavor(DishDTO dishDTO);
+
+    /**
+     * 菜品分页查询
+     * @param dishPageQueryDTO
+     * @return
+     */
+    PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 批量删除菜品
+     * @param ids
+     */
+    void deleteBatch(List<Long> ids);
+
+    /**
+     * 根据id查询菜品
+     * @param id
+     * @return
+     */
+    DishVO getByIdWithFlavor(Long id);
+
+    /**
+     * 修改菜品
+     * @param dishDTO
+     */
+    void updateWithFlavor(DishDTO dishDTO);
+
+    /**
+     * 起售停售菜品
+     * @param status
+     * @param id
+     */
+    void startOrStop(Integer status, Long id);
+
+    /**
+     * 根据分类id查询菜品
+     * @param dish
+     * @return
+     */
+    List<DishVO> listWithFlavor(Dish dish);
+
+    /**
+     * 动态条件查询菜品和口味
+     * @param dish
+     * @return
+     */
+    List<Dish> list(Dish dish);
+
+    /**
+     * 查询所有菜�?
+     * @return
+     */
+    List<DishVO> listallWithFlavor();
+}

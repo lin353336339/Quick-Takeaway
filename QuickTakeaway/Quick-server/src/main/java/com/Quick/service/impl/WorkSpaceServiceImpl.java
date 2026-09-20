@@ -1,0 +1,142 @@
+package com.Quick.service.impl;
+
+import com.Quick.constant.StatusConstant;
+import com.Quick.entity.Orders;
+import com.Quick.mapper.*;
+import com.Quick.service.WorkSpaceService;
+import com.Quick.vo.BusinessDataVO;
+import com.Quick.vo.DishOverViewVO;
+import com.Quick.vo.OrderOverViewVO;
+import com.Quick.vo.SetmealOverViewVO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
+
+@Service
+@Slf4j
+public class WorkSpaceServiceImpl implements WorkSpaceService {
+
+    @Autowired
+    private WorkSpaceMapper workSpaceMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private OrderMapper orderMapper;
+    @Autowired
+    private DishMapper dishMapper;
+    @Autowired
+    private SetmealMapper setmealMapper;
+
+    /**
+     * 查询运营数据
+     * @return
+     */
+    @Override
+    public BusinessDataVO getBusinessData(LocalDateTime begin, LocalDateTime end) {
+        Map map = new HashMap();
+        map.put("begin",begin);
+        map.put("end",end);
+        //统计总订单数
+        Integer  OrderCount = workSpaceMapper.getOrderCountByMap(map);
+        map.put("status", Orders.COMPLETED);
+        // 有效订单�?
+        Integer orderCount = workSpaceMapper.getOrderCountByMap(map);
+        // 营业�?
+        Double turnover = workSpaceMapper.getTurnoverByMap(map);
+        turnover = turnover == null?0:turnover;
+        // 订单完成�?
+        Double orderCompletionRate = orderCount == 0?0:orderCount.doubleValue()/OrderCount;
+        // 平均客单�?
+        Double unitPrice = turnover == 0?0:turnover/orderCount;
+//        private Integer newUsers;
+        // 新增用户�?
+        Integer newUsers = userMapper.countUser(map);
+
+        return BusinessDataVO.builder()
+                .turnover(turnover)
+                .validOrderCount(orderCount)
+                .orderCompletionRate(orderCompletionRate)
+                .unitPrice(unitPrice)
+                .newUsers(newUsers)
+                .build();
+    }
+
+    /**
+     * 查询订单管理数据
+     *
+     * @return
+     */
+    public OrderOverViewVO getOrderOverView() {
+        Map map = new HashMap();
+        map.put("begin", LocalDateTime.now().with(LocalTime.MIN));
+        map.put("status", Orders.TO_BE_CONFIRMED);
+
+        //待接�?
+        Integer waitingOrders = orderMapper.countByMap(map);
+        map.put("status", Orders.CONFIRMED);
+        Integer deliveredOrders = orderMapper.countByMap(map);
+        map.put("status", Orders.COMPLETED);
+        Integer completedOrders = orderMapper.countByMap(map);
+        map.put("status", Orders.CANCELLED);
+        Integer cancelledOrders = orderMapper.countByMap(map);
+        //全部订单
+        map.put("status", null);
+        Integer allOrders = orderMapper.countByMap(map);
+
+        return OrderOverViewVO.builder()
+                .waitingOrders(waitingOrders)
+                .deliveredOrders(deliveredOrders)
+                .completedOrders(completedOrders)
+                .cancelledOrders(cancelledOrders)
+                .allOrders(allOrders)
+                .build();
+    }
+    /**
+     * 查询菜品总览
+     *
+     * @return
+     */
+    public DishOverViewVO getDishOverView() {
+        Map map = new HashMap();
+
+        //查询起售菜品
+        map.put("status", StatusConstant.ENABLE);
+        Integer sold = dishMapper.countByMap(map);
+
+        //查询停售菜品
+        map.put("status", StatusConstant.DISABLE);
+        Integer discontinued = dishMapper.countByMap(map);
+
+        return DishOverViewVO.builder()
+                .sold(sold)
+                .discontinued(discontinued)
+                .build();
+    }
+
+    /**
+     * 查询套餐总览
+     *
+     * @return
+     */
+    public SetmealOverViewVO getSetmealOverView() {
+        Map map = new HashMap();
+        //查询起售套餐
+        map.put("status", StatusConstant.ENABLE);
+        Integer sold = setmealMapper.countByMap(map);
+
+        //查询停售套餐
+        map.put("status", StatusConstant.DISABLE);
+        Integer discontinued = setmealMapper.countByMap(map);
+
+        return SetmealOverViewVO.builder()
+                .sold(sold)
+                .discontinued(discontinued)
+                .build();
+    }
+
+}

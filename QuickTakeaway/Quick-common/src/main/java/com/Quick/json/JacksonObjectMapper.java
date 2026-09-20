@@ -1,4 +1,4 @@
-package com.sky.json;
+package com.Quick.json;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

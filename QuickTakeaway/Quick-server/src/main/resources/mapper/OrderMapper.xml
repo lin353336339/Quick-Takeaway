@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sky.mapper.OrderMapper">
+<mapper namespace="com.Quick.mapper.OrderMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into orders (number, status, user_id, address_book_id, order_time,
                             checkout_time, pay_method, pay_status, amount, remark,
@@ -13,7 +13,7 @@
                 #{deliveryStatus},#{packAmount},#{tablewareNumber},#{tablewareStatus})
     </insert>
 
-    <update id="update" parameterType="com.sky.entity.Orders">
+    <update id="update" parameterType="com.Quick.entity.Orders">
         update orders
         <set>
             <if test="cancelReason != null and cancelReason!='' ">
@@ -44,7 +44,7 @@
         where id = #{id}
     </update>
 
-    <select id="listOrder" resultType="com.sky.vo.OrderVO">
+    <select id="listOrder" resultType="com.Quick.vo.OrderVO">
         select *  from orders
         <where>
             <if test="status != null">

@@ -1,4 +1,4 @@
-package com.sky.utils;
+package com.Quick.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.NameValuePair;

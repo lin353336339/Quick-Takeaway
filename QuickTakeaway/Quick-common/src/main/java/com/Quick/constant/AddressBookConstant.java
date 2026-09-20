@@ -1,4 +1,4 @@
-package com.sky.constant;
+package com.Quick.constant;
 /**
  * 地址薄常量
  */
