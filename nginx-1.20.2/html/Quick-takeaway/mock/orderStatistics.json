@@ -1,0 +1,12 @@
+{
+  "code": 1,
+  "msg": "操作成功",
+  "data": {
+    "toBeConfirmed": 4,
+    "confirmed": 2,
+    "deliveryInProgress": 1,
+    "completed": 5,
+    "cancelled": 1,
+    "rejected": 0
+  }
+} 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>快快达外卖管理系统</title>
+    <meta name="description" content="基于Vue 3的现代化餐厅后台管理系统">
+    <meta name="keywords" content="餐厅管理,后台管理,Vue3,Element Plus">
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 使用系统默认字体 -->
+    <style>
+      html {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+                     'Helvetica Neue', sans-serif;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-6pAx-ITk.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DGbBJb8b.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 添加加载提示 -->
+    <div id="loading" style="display: none;">
+      <style>
+        #loading {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .loading-spinner {
+          width: 50px;
+          height: 50px;
+          border: 3px solid #f3f3f3;
+          border-top: 3px solid #1890ff;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+      <div class="loading-spinner"></div>
+    </div>
+    <script>
+      // 显示加载动画
+      document.getElementById('loading').style.display = 'flex'
+      // 页面加载完成后隐藏
+      window.addEventListener('load', () => {
+        document.getElementById('loading').style.display = 'none'
+      })
+    </script>
+  </body>
+</html>
